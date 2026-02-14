@@ -1,7 +1,7 @@
-package com.gtservices.hms.appointment.entity;
+package com.gtservices.hms.billing.entity.entity;
 
 import com.gtservices.hms.consultation.entity.entity.Consultation;
-import com.gtservices.hms.doctor.entity.entity.Doctor;
+import com.gtservices.hms.patient.entity.PatientVisit;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -17,33 +17,39 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "follow_up_visits")
+@Table(name = "opd_bills")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FollowUpVisit {
+public class OpdBill {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "followup_id")
-    private Integer followupId;
+    @Column(name = "bill_id")
+    private Integer billId;
+
+    @Column(name = "bill_uid", unique = true, length = 20)
+    private String billUid;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "visit_id")
+    private PatientVisit visit;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "consultation_id")
     private Consultation consultation;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "followup_doctor_id")
-    private Doctor followupDoctor;
+    @Column(name = "visiting_fees", precision = 10, scale = 2)
+    private BigDecimal visitingFees;
 
-    @Column(name = "followup_date")
-    private LocalDate followupDate;
+    @Column(name = "total_amount", precision = 10, scale = 2)
+    private BigDecimal totalAmount;
 
-    @Column(name = "followup_time")
-    private LocalTime followupTime;
+    @Column(name = "bill_date")
+    private LocalDateTime billDate;
 }

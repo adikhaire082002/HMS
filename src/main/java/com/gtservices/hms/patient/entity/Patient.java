@@ -1,7 +1,7 @@
 package com.gtservices.hms.patient.entity;
 
 import com.gtservices.hms.appointment.entity.Appointment;
-import com.gtservices.hms.billing.entity.Payment;
+import com.gtservices.hms.billing.entity.entity.Payment;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

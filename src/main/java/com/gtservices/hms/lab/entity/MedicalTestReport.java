@@ -1,8 +1,8 @@
 package com.gtservices.hms.lab.entity;
 
 import com.gtservices.hms.appointment.entity.Appointment;
-import com.gtservices.hms.consultation.entity.Consultation;
-import com.gtservices.hms.doctor.entity.Doctor;
+import com.gtservices.hms.consultation.entity.entity.Consultation;
+import com.gtservices.hms.doctor.entity.entity.Doctor;
 import com.gtservices.hms.patient.entity.Patient;
 import com.gtservices.hms.enums.ReportStatus;
 

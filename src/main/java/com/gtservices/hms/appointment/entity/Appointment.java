@@ -1,6 +1,6 @@
 package com.gtservices.hms.appointment.entity;
 
-import com.gtservices.hms.doctor.entity.Doctor;
+import com.gtservices.hms.doctor.entity.entity.Doctor;
 import com.gtservices.hms.patient.entity.Patient;
 import com.gtservices.hms.enums.AppointmentStatus;
 import com.gtservices.hms.enums.BookingSource;
