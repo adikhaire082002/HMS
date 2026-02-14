@@ -1,9 +1,9 @@
 package com.gtservices.hms.report.entity;
 
 import com.gtservices.hms.appointment.entity.Appointment;
-import com.gtservices.hms.billing.entity.entity.OpdBill;
-import com.gtservices.hms.consultation.entity.entity.Consultation;
-import com.gtservices.hms.consultation.entity.entity.Prescription;
+import com.gtservices.hms.billing.entity.OpdBill;
+import com.gtservices.hms.consultation.entity.Consultation;
+import com.gtservices.hms.consultation.entity.Prescription;
 import com.gtservices.hms.ipd.entity.IpdAdmission;
 import com.gtservices.hms.ipd.entity.IpdInvoice;
 import com.gtservices.hms.patient.entity.Patient;

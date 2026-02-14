@@ -1,7 +1,5 @@
-package com.gtservices.hms.appointment.entity;
+package com.gtservices.hms.doctor.entity;
 
-import com.gtservices.hms.consultation.entity.Consultation;
-import com.gtservices.hms.doctor.entity.Doctor;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -17,33 +15,33 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 @Entity
-@Table(name = "follow_up_visits")
+@Table(name = "doctor_education")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FollowUpVisit {
+public class DoctorEducation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "followup_id")
-    private Integer followupId;
+    @Column(name = "education_id")
+    private Integer educationId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "consultation_id")
-    private Consultation consultation;
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "followup_doctor_id")
-    private Doctor followupDoctor;
+    @JoinColumn(name = "degree_id")
+    private DegreeMaster degree;
 
-    @Column(name = "followup_date")
-    private LocalDate followupDate;
+    @Column(name = "specialization", length = 100)
+    private String specialization;
 
-    @Column(name = "followup_time")
-    private LocalTime followupTime;
+    @Column(name = "university_name", length = 150)
+    private String universityName;
+
+    @Column(name = "year_of_passing")
+    private Integer yearOfPassing;
 }

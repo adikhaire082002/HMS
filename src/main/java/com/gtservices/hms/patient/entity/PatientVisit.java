@@ -1,6 +1,6 @@
 package com.gtservices.hms.patient.entity;
 
-import com.gtservices.hms.consultation.entity.entity.Consultation;
+import com.gtservices.hms.consultation.entity.Consultation;
 import com.gtservices.hms.enums.VisitStatus;
 
 import jakarta.persistence.Column;
