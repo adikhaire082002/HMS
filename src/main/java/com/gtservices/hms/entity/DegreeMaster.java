@@ -1,0 +1,30 @@
+package com.gtservices.hms.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Table(name = "degree_master")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class DegreeMaster {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "degree_id")
+    private Integer degreeId;
+
+    @Column(name = "degree_name", unique = true, length = 50)
+    private String degreeName;
+}
