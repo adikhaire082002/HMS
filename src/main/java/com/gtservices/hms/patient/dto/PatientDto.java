@@ -1,4 +1,8 @@
 package com.gtservices.hms.patient.dto;
 
-public class PatientDto {
+import lombok.*;
+
+public class PatientDto
+{
+
 }

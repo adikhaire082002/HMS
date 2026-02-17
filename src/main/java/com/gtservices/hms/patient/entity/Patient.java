@@ -2,15 +2,8 @@ package com.gtservices.hms.patient.entity;
 
 import com.gtservices.hms.appointment.entity.Appointment;
 import com.gtservices.hms.billing.entity.Payment;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Table;
+import com.gtservices.hms.user.entity.User;
+import jakarta.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -48,11 +41,17 @@ public class Patient {
     @Column(name = "mobile_no", unique = true, length = 15)
     private String mobileNo;
 
-    @Column(name = "alternate_mobile", length = 15)
-    private String alternateMobile;
+    @Column(name = "email", length = 100)
+    private String email;
 
-    @Column(name = "blood_group", length = 5)
+    @Column(name = "blood_group", length = 10)
     private String bloodGroup;
+
+    @Column(name = "blood_pressure", length = 20)
+    private String bloodPressure;
+
+    @Column(name = "weight")
+    private Double weight;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -65,4 +64,16 @@ public class Patient {
 
     @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY)
     private List<Payment> payments;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PatientFamily> familyMembers;
+
+
+
+
+
 }
