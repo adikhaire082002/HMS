@@ -36,9 +36,6 @@ public class DoctorEducation {
     @JoinColumn(name = "degree_id")
     private DegreeMaster degree;
 
-    @Column(name = "specialization", length = 100)
-    private String specialization;
-
     @Column(name = "university_name", length = 150)
     private String universityName;
 

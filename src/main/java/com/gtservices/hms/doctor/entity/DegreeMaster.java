@@ -27,4 +27,5 @@ public class DegreeMaster {
 
     @Column(name = "degree_name", unique = true, length = 50)
     private String degreeName;
+
 }
