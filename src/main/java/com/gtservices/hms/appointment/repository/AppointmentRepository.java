@@ -2,6 +2,16 @@ package com.gtservices.hms.appointment.repository;
 
 import com.gtservices.hms.appointment.entity.Appointment;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-public interface AppointmentRepository extends JpaRepository<Appointment, Integer> {
+import java.util.List;
+
+public interface AppointmentRepository extends JpaRepository<Appointment, Integer>
+{
+    @Query("SELECT a FROM Appointment a " +
+            "JOIN FETCH a.doctor " +
+            "WHERE a.patient.patientId = :patientId")
+    List<Appointment> findAppointmentsWithDoctorByPatientId(@Param("patientId") Integer patientId);
+
 }

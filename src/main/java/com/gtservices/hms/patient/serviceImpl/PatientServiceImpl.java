@@ -108,7 +108,7 @@ public class PatientServiceImpl implements PatientService
         Patient patient = patientRepository.findById(patientId)
                 .orElseThrow(()-> new RuntimeException("Patient not found with ID: " + patientId));
 
-        List<AppointmentDto> appointmentDTOs = appointmentRepository.findAppointmentWithDoctor(patientId)
+        List<AppointmentDto> appointmentDTOs = appointmentRepository.findAppointmentsWithDoctorByPatientId(patientId)
                 .stream()
                 .map(a -> {
                     AppointmentDto dto = new AppointmentDto();
