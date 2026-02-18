@@ -1,6 +1,7 @@
 package com.gtservices.hms.patient.mapper;
 
 import com.gtservices.hms.appointment.dto.AppointmentDto;
+import com.gtservices.hms.appointment.dto.AppointmentResponseDto;
 import com.gtservices.hms.appointment.dto.PatientAppointmentsDto;
 import com.gtservices.hms.appointment.entity.Appointment;
 import com.gtservices.hms.patient.dto.PatientFamilyDto;
@@ -39,31 +40,31 @@ public class PatientMapper
         return dto;
     }
 
-    public static AppointmentDto mapAppointmentToDTO(Appointment appt)
+    public static AppointmentResponseDto mapAppointmentToDTO(Appointment appt)
     {
-        AppointmentDto dto = new AppointmentDto();
+        AppointmentResponseDto dto = new AppointmentResponseDto();
 
         dto.setAppointmentId(appt.getAppointmentId());
         dto.setDoctorName(appt.getDoctor().getDoctorName());
         dto.setAppointmentDate(appt.getAppointmentDate());
         dto.setAppointmentTime(appt.getAppointmentTime());
-        dto.setAppointmentStatus(appt.getAppointmentStatus());
+        dto.setAppointmentStatus(String.valueOf(appt.getAppointmentStatus()));
 
         return dto;
     }
 
     public static PatientAppointmentsDto mapToPatientAppointmentsDTO(Patient patient, List<Appointment> appointments) {
-        List<AppointmentDto> appointmentDTOs = appointments.stream()
-                .map(PatientMapper::mapAppointmentToDTO)
-                .collect(Collectors.toList());
+//        List<AppointmentDto> appointmentDTOs = appointments.stream()
+//                .map(PatientMapper::mapAppointmentToDTO)
+//                .collect(Collectors.toList());
+//
+//        PatientAppointmentsDto dto = new PatientAppointmentsDto();
+//        dto.setPatientId(patient.getPatientId());
+//        dto.setPatientName(patient.getPatientName());
+//        dto.setEmail(patient.getEmail());
+//        dto.setMobileNo(patient.getMobileNo());
+//        dto.setAppointments(appointmentDTOs);
 
-        PatientAppointmentsDto dto = new PatientAppointmentsDto();
-        dto.setPatientId(patient.getPatientId());
-        dto.setPatientName(patient.getPatientName());
-        dto.setEmail(patient.getEmail());
-        dto.setMobileNo(patient.getMobileNo());
-        dto.setAppointments(appointmentDTOs);
-
-        return dto;
+        return null;
     }
 }

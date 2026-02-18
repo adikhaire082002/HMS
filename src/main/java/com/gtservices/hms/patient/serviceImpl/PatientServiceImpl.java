@@ -1,6 +1,7 @@
 package com.gtservices.hms.patient.serviceImpl;
 
 import com.gtservices.hms.appointment.dto.AppointmentDto;
+import com.gtservices.hms.appointment.dto.AppointmentResponseDto;
 import com.gtservices.hms.appointment.dto.PatientAppointmentsDto;
 import com.gtservices.hms.appointment.repository.AppointmentRepository;
 import com.gtservices.hms.patient.dto.PatientRequestDto;
@@ -17,7 +18,7 @@ import com.gtservices.hms.user.repository.RoleRepository;
 import com.gtservices.hms.user.repository.UserRepository;
 import lombok.*;
 import org.springframework.stereotype.Service;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -66,8 +67,9 @@ public class PatientServiceImpl implements PatientService
         user.setEmail(dto.getEmail());
 
         // Manual password encoder (no bean required)
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        user.setPasswordHash(encoder.encode("12345"));
+//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//        user.setPasswordHash(encoder.encode("12345"));
+        user.setPasswordHash("123456");
 
         user.setRole(patientRole);
         user.setIsActive(true);
@@ -108,6 +110,7 @@ public class PatientServiceImpl implements PatientService
         Patient patient = patientRepository.findById(patientId)
                 .orElseThrow(()-> new RuntimeException("Patient not found with ID: " + patientId));
 
+<<<<<<< HEAD
         List<AppointmentDto> appointmentDTOs = appointmentRepository.findAppointmentsWithDoctorByPatientId(patientId)
                 .stream()
                 .map(a -> {
@@ -120,13 +123,27 @@ public class PatientServiceImpl implements PatientService
                     dto.setReasonForVisit(a.getReasonForVisit());
                     return dto;
                 }).collect(Collectors.toList());
+=======
+//        List<AppointmentDto> appointmentDTOs = appointmentRepository.findAppointmentsWithDoctorByPatientId(patientId)
+//                .stream()
+//                .map(a -> {
+//                    AppointmentResponseDto dto = new AppointmentResponseDto();
+//                    dto.setAppointmentId(a.getAppointmentId());
+//                    dto.setDoctorName(a.getDoctor().getDoctorName());
+//                    dto.setAppointmentDate(a.getAppointmentDate());
+//                    dto.setAppointmentTime(a.getAppointmentTime());
+//                    dto.setAppointmentStatus(String.valueOf(a.getAppointmentStatus()));
+//                    dto.setReasonForVisit(a.getReasonForVisit());
+//                    return dto;
+//                }).collect(Collectors.toList());
+>>>>>>> 7eff6b9 (added get appointments by status and id)
 
         PatientAppointmentsDto dto = new PatientAppointmentsDto();
         dto.setPatientId(patient.getPatientId());
         dto.setPatientName(patient.getPatientName());
         dto.setEmail(patient.getEmail());
         dto.setMobileNo(patient.getMobileNo());
-        dto.setAppointments(appointmentDTOs);
+//        dto.setAppointments(appointmentDTOs);
 
         return dto;
 
